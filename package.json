@@ -1,0 +1,12 @@
+{
+  "name": "drandresleon-brand-kit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Marca, contenido educativo y plantillas de Instagram del Dr. Andrés León (Endodoncia, Bogotá)",
+  "scripts": {
+    "render": "node instagram/render.mjs",
+    "plantillas": "node instagram/render.mjs instagram/plantillas"
+  },
+  "devDependencies": { "playwright": "^1.47.0" }
+}

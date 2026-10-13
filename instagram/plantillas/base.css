@@ -1,0 +1,64 @@
+/* ══════════════════════════════════════════════════════════════════════
+   Dr. Andrés León — base para piezas de Instagram
+   Lienzo fijo: feed 1080×1350 (4:5) · story 1080×1920 (9:16)
+   Tema por clase en <body>: .claro · .tinta · .hielo
+   ══════════════════════════════════════════════════════════════════════ */
+@import url("../../marca/tokens.css");
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body.story,html:has(body.story){height:1920px}
+body{font-family:var(--f-cuerpo);-webkit-font-smoothing:antialiased;background:var(--fondo);color:var(--texto);position:relative}
+body.claro{--fondo:var(--claro);--texto:var(--tinta);--remate:var(--azul-hondo);--suave:var(--gris);--borde:var(--tinta)}
+body.tinta{--fondo:var(--tinta);--texto:var(--claro);--remate:var(--azul);--suave:var(--gris-claro);--borde:var(--azul)}
+body.hielo{--fondo:var(--hielo);--texto:var(--tinta);--remate:var(--azul-hondo);--suave:var(--gris);--borde:var(--tinta)}
+
+.lienzo{position:absolute;inset:0;padding:96px 88px;display:flex;flex-direction:column}
+.story .lienzo{padding:180px 88px 220px}   /* zonas seguras de la interfaz de stories */
+
+.cabeza,.pie{display:flex;justify-content:space-between;align-items:center;gap:24px}
+.pie{margin-top:auto;align-items:flex-end}
+.logo{height:92px;width:auto;display:block}
+.contador,.rotulo,.ficha .k{font-family:var(--f-mono);font-size:22px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--suave)}
+.contador{font-variant-numeric:tabular-nums}
+
+.mega,.grande,.media,.ficha h3,.pill,.num{font-family:var(--f)}
+.mega{font-size:160px;font-weight:800;line-height:.9;letter-spacing:-.04em;text-transform:uppercase}
+.grande{font-size:108px;font-weight:800;line-height:.98;letter-spacing:-.03em;text-wrap:balance}
+.media{font-size:60px;font-weight:700;line-height:1.08;letter-spacing:-.025em;text-wrap:balance}
+.cuerpo{font-size:38px;line-height:1.42;font-weight:400;max-width:30ch}
+.mini{font-size:28px;line-height:1.45;color:var(--suave)}
+.remate{color:var(--remate)}
+.num{font-variant-numeric:lining-nums tabular-nums}
+.flecha{font-size:56px;line-height:1;color:var(--suave)}
+.regla{height:2px;background:currentColor;opacity:.2}
+
+.ficha{border-top:2px solid var(--borde);padding-top:22px;display:flex;flex-direction:column;gap:12px}
+.ficha .k{color:var(--suave);text-transform:uppercase}
+.ficha h3{font-size:44px;font-weight:700;letter-spacing:-.02em;line-height:1.12}
+.ficha p{font-size:30px;line-height:1.45;color:var(--suave)}
+
+.pill{display:inline-flex;align-items:center;gap:16px;border-radius:999px;padding:26px 44px;font-size:30px;font-weight:700;border:2px solid var(--texto);color:var(--texto)}
+.pill.llena{background:var(--texto);color:var(--fondo)}
+
+/* nota de prudencia clínica al pie de las piezas educativas */
+.nota{font-size:22px;line-height:1.4;color:var(--suave);max-width:46ch}
+
+/* efecto «enfoque» congelado */
+.desenfoque-1{filter:blur(4px);opacity:.55}
+.desenfoque-2{filter:blur(9px);opacity:.3}
+
+/* textura de firma del reel: puntos + halo (solo temas claros) */
+body.claro::before,body.hielo::before{content:'';position:absolute;inset:-40px;z-index:0;pointer-events:none;opacity:.6;
+  background-image:radial-gradient(circle,#C3D2E8 2.4px,transparent 2.9px);background-size:46px 46px}
+body.claro::after,body.hielo::after{content:'';position:absolute;right:-380px;top:-420px;width:1100px;height:1100px;border-radius:50%;z-index:0;pointer-events:none;
+  background:radial-gradient(circle,rgba(190,228,255,.85) 0%,rgba(219,240,253,0) 68%)}
+.lienzo{z-index:2}
+
+/* tarjeta ficha (como en el reel) */
+.tarjeta{background:var(--blanco);border-radius:46px;overflow:hidden;box-shadow:0 46px 90px rgba(24,74,150,.17),0 10px 24px rgba(24,74,150,.08);color:var(--tinta)}
+.tarjeta .cab{background:var(--azul);padding:26px 40px;display:flex;align-items:center;justify-content:space-between}
+.tarjeta .cab img{height:64px}
+.tarjeta .cab span{font-family:var(--f-mono);font-size:18px;font-weight:600;letter-spacing:.2em;color:rgba(255,255,255,.92);text-transform:uppercase}
+.tarjeta .cuerpo-t{padding:36px 40px;display:flex;flex-direction:column;gap:14px}
+.pico{color:var(--coral)}
